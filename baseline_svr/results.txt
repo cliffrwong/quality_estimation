@@ -1,0 +1,65 @@
+Target Error Values:
+Pearson’s r = 0.3510, MAE = 0.1353, RMSE = 0.1839
+Spearman rho = 0.390, DeltaAvg = 6.298
+Run1
+logC=[-3, 2], 
+logGamma=[-6, 0],
+logEpsilon=[-2, 1]
+evals = 200
+{'logGamma': -4.287734374999999, 'logEpsilon': -0.5673432747287188, 'logC': 1.997742362818002}
+Pearson's r: (0.30799938161289403, 3.2983561775134548e-45)
+RMSE: 18.965509215767465
+MAE: 14.0143418907
+
+Run2
+Bounds:
+logC=[-3, 3], 
+logGamma=[-6, 0],
+logEpsilon=[-2, 1]
+evals = 200
+{'logEpsilon': -0.006113281250000213, 'logGamma': -4.8139453125, 'logC': 2.997721537307065}
+Pearson's r: (0.32174786119873738, 2.1353065767854322e-49)
+RMSE: 18.887053372319087
+MAE: 13.9652509648
+
+Run3
+logC=[2.5, 5], 
+logGamma=[-5, -4],
+logEpsilon=[-1, 0.5]
+evals = 200
+{'logEpsilon': 0.4934197757488058, 'logGamma': -4.985334134533736, 'logC': 4.188441266404375}
+Pearson's r: (0.33839699842946425, 9.0310174407339114e-55)
+RMSE: 18.66675223149638
+Spearman's rank: 0.373437466335
+MAE: 13.8300692719
+
+Run 4
+logC=[3, 5], 
+logGamma=[-6, -4.5],
+logEpsilon=[-1, 1])
+{'logC': 4.611580485345255, 'logGamma': -5.561520477022928, 'logEpsilon': 0.9947888982805112}
+Pearson's r: 0.342760599432
+RMSE: 18.28322005156628
+MAE: 13.6068052946
+Spearman's rank: 0.375956582131
+
+Run 5
+logC=[4, 6], 
+logGamma=[-6.5, -5],
+logEpsilon=[0.5, 1.5],
+{'logGamma': -5.779807867701442, 'logC': 5.486541574945928, 'logEpsilon': 1.186123807628284}
+Pearson's r: 0.347256502405
+RMSE: 17.961891895032164
+MAE: 13.5498322019
+Spearman's rank: 0.380216354491
+
+From NN
+Pearson's r: 0.0689215
+RMSE: 19.24757667249755
+MAE: 15.737
+Spearman's rank: 0.07377321056
+
+Pearson's r: (0.33839699842946425
+RMSE: 18.66675223149638
+Spearman's rank: 0.373437466335
+MAE: 13.8300692719
