@@ -275,34 +275,7 @@ def qualvec():
             _, _, outputs = model.step(sess, encoder_inputs, decoder_inputs,
                                            target_weights, bucket_id, State.QUALVEC)
                     
-            # for x in outputs:
-            #     print(x[::-1])
-                # print(np.sum(x[:-1]))
-                # print(np.sum(x[:-1]))
-            # This is a greedy decoder - outputs are just argmaxes of output_logits.
-            # Write the quality vectors to file
-            # outputs2 = [output[0] for output in outputs]
             results.append(outputs)
-            # print(outputs)
-            # temp = [np.sum(item) for item in outputs]
-            # print(temp)
-            # temp = [item for item in temp if item != 0]
-            # print(sum(temp) / float(len(temp)))
-            # temp = [np.sum(item) for item in outputs]
-            # print(temp)
-
-            # print(np.mean([item for item in temp if item != 0.0]))
-            
-            # print([np.sum(np.sqrt(((item) ** 2))) for item in outputs])
-            # if count == 20:
-            # sys.exit()
-            # count += 1
-            # print(count)
-            # sys.exit()
-            # np.savetxt(outfile, outputs)
-            # outfile.write("{0}\n".format(outputs))
-        # with open(out_path,'wb') as f:
-        #     np.savetxt(f, results, fmt='%.5f')
         pickle.dump(results, open(out_path, "wb" ) )
 
 def translate():
@@ -354,46 +327,11 @@ def translate():
             # print('stateIn', stateIn)
             # print('stateOut', stateOut)
             print(scipy.spatial.distance.cosine(stateIn, stateOut))
-            # print(np.dot(stateIn, np.transpose(stateOut)))
-            # outputs = [w_t[x] for x in target_ids]
-            
-            # np.save("bottom", outputs)
-            
-            # print(target_ids)
-            # print('source')
-            # print(" ".join([tf.compat.as_str(rev_target_vocab[output]) for output in outputs]))
             print("> ", end="")
             sys.stdout.flush()
             count += 1
             if count == 2:
                 sys.exit()
-
-            # results.append(outputs)
-            # print(outputs)
-            # for item in outputs:
-            #     print(np.average(item))
-            # for item in outputs:
-            #     print(np.sqrt(((item) ** 2).mean()))
-            
-def self_test():
-  """Test the translation model."""
-  with tf.Session() as sess:
-    print("Self-test for neural translation model.")
-    # Create model with vocabularies of 10, 2 small buckets, 2 layers of 32.
-    model = paradet_model.QualVecModel(10, 10, [(3, 3), (6, 6)], 32, 2,
-                                       5.0, 32, 0.3, 0.99, State.TRAIN, num_samples=8)
-    sess.run(tf.global_variables_initializer())
-
-    # Fake data set for both the (3, 3) and (6, 6) bucket.
-    data_set = ([([1, 1], [2, 2]), ([3, 3], [4]), ([5], [6])],
-                [([1, 1, 1, 1, 1], [2, 2, 2, 2, 2]), ([3, 3, 3], [5, 6])])
-    for _ in range(5):  # Train the fake model for 5 steps.
-      bucket_id = random.choice([0, 1])
-      encoder_inputs, decoder_inputs, target_weights = model.get_batch(
-          data_set, bucket_id)
-      model.step(sess, encoder_inputs, decoder_inputs, target_weights,
-                 bucket_id, False)
-
 
 def main(_):
     if FLAGS.self_test:
