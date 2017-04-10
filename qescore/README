@@ -1,7 +1,0 @@
-To Train:
-
-python translate.py --data_dir ~/Documents/data/tensorflow/data_dir/ --train_dir ~/Documents/data/tensorflow/train_dir5/ --max_train_data_size 20000
-
-perl ~/Documents/code/mosesdecoder/scripts/tokenizer/tokenizer.perl -l en < ~/Documents/data/tensorflow/data_dir/eng3.data  -threads 8 > ~/Documents/data/tensorflow/data_dir/eng4.data
-
-python qualScore.py --data_dir ~/Documents/data/tensorflow/data_dir_qe/ --train_dir ~/Documents/data/tensorflow/train_dir5b/
