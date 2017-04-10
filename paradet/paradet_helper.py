@@ -185,17 +185,6 @@ def attention_decoder(decoder_inputs,
             #         inp = loop_function(prev, i)
             # Merge input and previous attentions into one vector of the right size.
             input_size = inp.get_shape().with_rank(2)[1]
-            # if input_size.value is None:
-            #     raise ValueError("Could not infer input size from input: %s" % inp.name)
-                # Below should almost always be false   
-            
-            # x = linear([inp] + attns, input_size, True)
-            # Run the RNN.
-            # context, a = attention(cell_output)
-            # contexts.append(context)
-            # collect_attn.append(a)
-            
-            # inp_concat = tf.concat(1,[inp, context])
             cell_output, stateForOut = for_cell(inp, stateForOut)
             for_output.append(cell_output)
             

@@ -108,7 +108,8 @@ def attention_decoder(decoder_inputs,
                                [-1, attn_length, 1, attn_size])
     # hidden_features = []
     # v = []
-    # Divide by two because attention_vec_size consists of both forward and backward encoder    
+    # Divide by two because attention_vec_size consists of both forward 
+    # and backward encoder    
     attention_vec_size = attn_size//2  # Size of query vectors for attention.
     # for a in range(num_heads):
     k = variable_scope.get_variable("AttnW_0",

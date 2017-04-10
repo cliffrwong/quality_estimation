@@ -1,11 +1,11 @@
 import random
-
 import numpy as np
 import tensorflow as tf
-from enum import Enum
 
 from tensorflow.python.ops import embedding_ops
 from tensorflow.models.rnn.translate import data_utils
+from enum import Enum
+
 import qe_helper
 
 class State(Enum):
