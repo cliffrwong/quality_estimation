@@ -14,8 +14,11 @@ Similar to qualvec except uses "general" attention from [Effective Approaches to
 
 
 To Train:
+
 Tokenize text with the [moses tokenizer](http://www.statmt.org/moses/?n=moses.baseline)
 
+For training NMT model:
 python qualvec/qualvec.py --data_dir <data directory containing parallel corpora> --train_dir <file path to directory storing trained model and log files>
 
+For obtaining quality vectors:
 python qescore/qe.py --data_dir <data directory containing quality estimation data> --train_dir <training dir>
