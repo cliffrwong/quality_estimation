@@ -117,19 +117,11 @@ class QualVecModel(object):
             self.target_weights, buckets, lambda x, y: qualvec_f(x, y, True),
             softmax_loss_function=softmax_loss_function)
         # Get the output embedding vector and bias for the translated word
-        # targets2 = [(embedding_ops.embedding_lookup(w_t, 
-        #             self.decoder_inputs[i + 1]),
-        #             tf.gather(output_projection[1], self.decoder_inputs[i + 1]))
-        #             for i in range(len(self.decoder_inputs) - 1)]
         targets2 = [embedding_ops.embedding_lookup(w_t, 
                     self.decoder_inputs[i + 1])
                     for i in range(len(self.decoder_inputs) - 1)]
         # Calculate the quality vector
         for b in range(len(buckets)):
-            # self.outputs[b] = [
-            #     tf.concat(1, [(target * output), tf.reshape(bias, [-1, 1])])
-            #     for output, (target, bias) in zip(self.outputs[b], targets2)
-            # ]
             self.outputs[b] = [target * output
                               for output, target in zip(self.outputs[b], targets2)
             ]
@@ -177,11 +169,6 @@ class QualVecModel(object):
   def step(self, session, encoder_inputs, decoder_inputs, target_weights,
            bucket_id, state):
     """Run a step of the model feeding the given inputs.
-    state:
-    0 for training
-    1 for quality vector
-    2 for translation
-
     """
     # Check if the sizes match.
     encoder_size, decoder_size = self.buckets[bucket_id]
@@ -232,21 +219,7 @@ class QualVecModel(object):
         return None, outputs[0], outputs[1:]  # No gradient norm, loss, outputs.
     
   def get_batch(self, data, bucket_id):
-    """Get a random batch of data from the specified bucket, prepare for step.
-
-    To feed data in step(..) it must be a list of batch-major vectors, while
-    data here contains single length-major cases. So the main logic of this
-    function is to re-index data cases to be in the proper format for feeding.
-
-    Args:
-      data: a tuple of size len(self.buckets) in which each element contains
-        lists of pairs of input and output data that we use to create a batch.
-      bucket_id: integer, which bucket to get the batch for.
-
-    Returns:
-      The triple (encoder_inputs, decoder_inputs, target_weights) for
-      the constructed batch that has the proper format to call step(...) later.
-    """
+    """Get a random batch of data from the specified bucket"""
     encoder_size, decoder_size = self.buckets[bucket_id]
     encoder_inputs, decoder_inputs = [], []
 

@@ -1,7 +1,3 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
 import math
 import os
 import random
@@ -279,34 +275,7 @@ def qualvec():
             _, _, outputs = model.step(sess, encoder_inputs, decoder_inputs,
                                            target_weights, bucket_id, State.QUALVEC)
                     
-            # for x in outputs:
-            #     print(x[::-1])
-                # print(np.sum(x[:-1]))
-                # print(np.sum(x[:-1]))
-            # This is a greedy decoder - outputs are just argmaxes of output_logits.
-            # Write the quality vectors to file
-            # outputs2 = [output[0] for output in outputs]
             results.append(outputs)
-            # print(outputs)
-            # temp = [np.sum(item) for item in outputs]
-            # print(temp)
-            # temp = [item for item in temp if item != 0]
-            # print(sum(temp) / float(len(temp)))
-            # temp = [np.sum(item) for item in outputs]
-            # print(temp)
-
-            # print(np.mean([item for item in temp if item != 0.0]))
-            
-            # print([np.sum(np.sqrt(((item) ** 2))) for item in outputs])
-            # if count == 20:
-            # sys.exit()
-            # count += 1
-            # print(count)
-            # sys.exit()
-            # np.savetxt(outfile, outputs)
-            # outfile.write("{0}\n".format(outputs))
-        # with open(out_path,'wb') as f:
-        #     np.savetxt(f, results, fmt='%.5f')
         pickle.dump(results, open(out_path, "wb" ) )
 
 def translate():
