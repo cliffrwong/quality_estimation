@@ -269,19 +269,9 @@ def qescore():
     #     np.savetxt(f, results, fmt='%.5f')
     pickle.dump(results, open(out_path, "wb" ) )
 
-    # f = open(out_path, 'w')
-    # for block in results:
-    #     for subblock in block:
-    #         np.savetxt(f, block, fmt='%.5f') # write to open file
-    #         f.write('\n') # spacer line
-    #     f.write('\n')  # another spacer
-    # f.close()
-
 
 def main(_):
-    if FLAGS.self_test:
-        self_test()
-    elif FLAGS.split_data:
+    if FLAGS.split_data:
         split_data()
     elif FLAGS.combine_ft:
         combine_ft()
